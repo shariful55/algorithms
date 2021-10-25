@@ -160,50 +160,99 @@
 
 
 
-function jumpSearch(arr, n, x){
-    // declare step
-    let step=Math.sqrt(n);
+// function jumpSearch(arr, n, x){
+//     // declare step
+//     let step=Math.sqrt(n);
 
-    // initialise previous value here okay .
-    let prev=0;
+//     // initialise previous value here okay .
+//     let prev=0;
 
-    while(arr[Math.min(step,n)-1]<x){
+//     while(arr[Math.min(step,n)-1]<x){
 
-        prev=step;
-        step+=Math.sqrt(n);
+//         prev=step;
+//         step+=Math.sqrt(n);
 
-        if(prev>=n)
-        return -1;
+//         if(prev>=n)
+//         return -1;
 
+//     }
+
+
+//     while (arr[prev]<x){
+
+//         prev++;
+
+//         if(prev==Math.min(step,n))
+//         return -1;
+
+
+//     }
+
+//     if(arr[prev]==x)
+//     return prev;
+
+//     return -1;
+
+// }
+
+// // Driver program to test function 
+
+// let arr=[0,1,5,24,25,95,100,112,50];
+// let x=95;
+// let n=arr.length;
+
+// let index=jumpSearch(arr,n,x);
+// // Print the index where 'x is located 
+// document.write(`Number ${x} is at index ${index}`);
+
+// interpolation search example 
+
+function LinearSearch(arr, lo,hi, x){
+
+    // pos variable declaration here.
+
+    let pos;
+
+    if(lo<=hi && x >=arr[lo]&& x <=arr[hi]){
+
+        pos=lo+Math.floor(((hi-lo)/(arr[hi]-arr[lo]))*(x-arr[lo]));
+
+        if(arr[pos]==x){
+        return pos;
+        }
+    
+        if(arr[pos]<x){
+            return LinearSearch(arr, pos+1, hi,x);
+        }
+
+        if(arr[pos]>x){
+            return LinearSearch(arr,lo,pos-1, x);
+        }
+    
     }
-
-
-    while (arr[prev]<x){
-
-        prev++;
-
-        if(prev==Math.min(step,n))
-        return -1;
-
-
-    }
-
-    if(arr[prev]==x)
-    return prev;
-
+    
     return -1;
 
 }
 
-// Driver program to test function 
 
-let arr=[0,1,5,24,25,95,100,112,50];
-let x=95;
+let arr=[1,2,3,4,5,6,98,7];
 let n=arr.length;
+let x=10;
 
-let index=jumpSearch(arr,n,x);
-// Print the index where 'x is located 
-document.write(`Number ${x} is at index ${index}`);
+let index=LinearSearch(arr,0,n-1,x);
 
+if(index!=-1){
+ document.write("Element is found at : "+index);
+}
+else {
+ document.write("Element is not found ;");
+}
+
+
+
+
+
+//basic linearsearch algorithms is here 
 
 
