@@ -207,52 +207,105 @@
 
 // interpolation search example 
 
-function LinearSearch(arr, lo,hi, x){
+// function LinearSearch(arr, lo,hi, x){
 
-    // pos variable declaration here.
+//     // pos variable declaration here.
 
-    let pos;
+//     let pos;
 
-    if(lo<=hi && x >=arr[lo]&& x <=arr[hi]){
+//     if(lo<=hi && x >=arr[lo]&& x <=arr[hi]){
 
-        pos=lo+Math.floor(((hi-lo)/(arr[hi]-arr[lo]))*(x-arr[lo]));
+//         pos=lo+Math.floor(((hi-lo)/(arr[hi]-arr[lo]))*(x-arr[lo]));
 
-        if(arr[pos]==x){
-        return pos;
-        }
+//         if(arr[pos]==x){
+//         return pos;
+//         }
     
-        if(arr[pos]<x){
-            return LinearSearch(arr, pos+1, hi,x);
-        }
+//         if(arr[pos]<x){
+//             return LinearSearch(arr, pos+1, hi,x);
+//         }
 
-        if(arr[pos]>x){
-            return LinearSearch(arr,lo,pos-1, x);
-        }
+//         if(arr[pos]>x){
+//             return LinearSearch(arr,lo,pos-1, x);
+//         }
     
-    }
+//     }
     
-    return -1;
+//     return -1;
+
+// }
+
+
+// let arr=[1,2,3,4,5,6,98,7];
+// let n=arr.length;
+// let x=10;
+
+// let index=LinearSearch(arr,0,n-1,x);
+
+// if(index!=-1){
+//  document.write("Element is found at : "+index);
+// }
+// else {
+//  document.write("Element is not found ;");
+// }
+
+
+
+
+
+// //basic linearsearch algorithms is here 
+
+
+//Exponential algorithm explanation
+
+// binarySearch function declaration
+
+
+function binarySearch(arr,l,r,x){
+    
+if(r>=l){
+    let mid=l+(r-1)/2;
+
+    if(arr[mid]==x)
+    return mid;
+
+    if(arr[mid]>=x)
+    return binarySearch(arr,l,mid-1,x);
+
+    return binarySearch(arr,mid+1,r,x);
+}
+return -1;
+}
+
+// exponentialSearch function declaration 
+
+function exponentialSearch(arr, n, x){
+
+    if(arr[0]==x)
+    return 0;
+
+    let i=1;
+    while(i<n && arr[i]<=x)
+    i=i*2;
+
+    return binarySearch(arr,i/2, Math.min(i,n-1),x);
+
 
 }
 
+// Drive code 
 
-let arr=[1,2,3,4,5,6,98,7];
-let n=arr.length;
-let x=10;
+let arr=[10,20,30,40,50,60,80,70];
+let n =arr.length;
+let x=50;
 
-let index=LinearSearch(arr,0,n-1,x);
+let index=exponentialSearch(arr, n, x);
 
-if(index!=-1){
- document.write("Element is found at : "+index);
-}
-else {
- document.write("Element is not found ;");
-}
+if(index!=-1)
+    document.write(`element is found at index at ${index}`);
 
+else
+    document.write("The element is not found here okay ops "+index);
 
-
-
-
-//basic linearsearch algorithms is here 
 
 
