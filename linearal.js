@@ -400,27 +400,60 @@
 
 // activity selection problems
 
-function printMaxActivities(s,f,n){
+// function printMaxActivities(s,f,n){
 
-    let i,j;
+//     let i,j;
 
-    // initial value starting activities here 
-    document.write("Printed basically initial value : n  ")
-    i=0;
-    document.write(i+" ");
+//     // initial value starting activities here 
+//     document.write("Printed basically initial value : n  ")
+//     i=0;
+//     document.write(i+" ");
 
-    for(j=1; j<n; j++){
-        if(s[j] >= f[i]){
+//     for(j=1; j<n; j++){
+//         if(s[j] >= f[i]){
 
-            document.write(j+" ");
-            i = j;
+//             document.write(j+" ");
+//             i = j;
 
-        }
+//         }
+//     }
+// }
+
+// let s=[1,3,0,4,8,5,7,50]
+// let f=[2,4,6,7,2,9,70]
+// let n=s.length;
+
+// printMaxActivities(s,f,n);
+
+
+function isMultipleof3(n){
+
+    odd_count=0;
+    even_count=0;
+    if(n<0)
+    n=-n;
+    if(n==0)
+    return n=1;
+    if(n==1)
+    return 0;
+
+    while(n){
+        if(n & 1)
+        odd_count++;
+        if(n&2)
+        even_count++;
+        n=n>>2;
+
     }
+    return isMultipleof3(Math.abs(odd_count-even_count));
 }
 
-let s=[1,3,0,4,8,5,7,50]
-let f=[2,4,6,7,2,9,70]
-let n=s.length;
 
-printMaxActivities(s,f,n);
+
+num=19;
+
+if(isMultipleof3(num)){
+    document.write(num+" is multiplied by 3");
+}else{
+    document.write(num+" is not multiplied by 3");
+}
